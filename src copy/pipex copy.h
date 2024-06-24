@@ -5,10 +5,9 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include "Libft/libft.h"
-#include <sys/wait.h>
 
 char *ft_get_exec(char **env, char *cmd);
-void ft_exec_pipe(char *argv, char **env);
-char *get_next_line(int fd);
-void ft_limiter_exec(char **argv);
+void ft_child(char **argv, int *pipe_fd, char **env);
+void ft_parent(char **argv, int *pipe_fd, char **env);
+
 #endif

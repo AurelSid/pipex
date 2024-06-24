@@ -6,12 +6,12 @@
 /*   By: roko <roko@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:34:29 by roko              #+#    #+#             */
-/*   Updated: 2024/06/21 12:34:29 by roko             ###   ########.fr       */
+/*   Updated: 2024/06/21 16:35:39 by roko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
-void ft_child(char **argv, int *pipe_fd, char **env)
+void ft_child(char *argv, int *pipe_fd, char **env)
 {
     int infd;
 
