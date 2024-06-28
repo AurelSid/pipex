@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roko <roko@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: asideris <asideris@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 21:03:54 by roko              #+#    #+#             */
-/*   Updated: 2024/06/22 20:38:14 by roko             ###   ########.fr       */
+/*   Updated: 2024/06/28 14:52:21 by asideris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,21 +45,21 @@ int main(int argc, char **argv, char **env)
         i++;
         if (argc < 6)
             return(0);
-        outfd = open(argv[argc - 1], O_APPEND);//ouverture en APPEND pour sassurer que >> rajouter et ne reecrit pas.01
+        outfd = open(argv[argc - 1], O_WRONLY | O_APPEND);
         ft_limiter_exec(argv);
     }
     else
     {
         infd = open(argv[1], O_RDONLY);
         outfd = open(argv[argc - 1], O_WRONLY);
-        dup2(infd, 0); // dup the txt de debut pour la 1ere cmd , ensuite le 0 fera ref au read du pipe precedent;
+        dup2(infd, 0); 
     }
-    while (i < argc - 2) // (argc - les deux fichier txt et la derniere cmd )
+    while (i < argc - 2) 
     {
         ft_exec_pipe(argv[i], env);
         i++;
     }
-    dup2(outfd, 1);// Fini par remplacer le output par le txt de sortie et execv la derniere cmd
-    ft_get_exec(env, argv[argc - 2]); // argc -12 ou i
+    dup2(outfd, 1);
+    ft_get_exec(env, argv[argc - 2]); 
     return (0);
 }
